@@ -1,0 +1,109 @@
+.otherOptions {
+	display: none;
+}
+#addbizform {
+	float: left;
+}
+#mapCanvas {
+	width: 500px;
+	height: 400px;
+	float: right;
+}
+div.time-picker {
+  position: absolute;
+  height: 191px;
+  width:4em;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #aaa;
+  z-index: 99;
+  margin: 0;
+}
+div.time-picker-12hours {
+  width:6em;
+}
+
+div.time-picker ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+div.time-picker li {
+  cursor: pointer;
+  height: 10px;
+  font: 12px/1 Helvetica, Arial, sans-serif;
+  padding: 4px 3px;
+}
+div.time-picker li.selected {
+  background: #0063CE;
+  color: #fff;
+}
+#bizdescription {
+	resize: none;
+}
+#monopened-label {
+	float: left;
+	display: inline-block;
+}
+#monopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 30px;
+}
+#tuesopened-label {
+	float: left;
+	display: inline-block;
+}
+#tuesopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 26px;
+}
+#wedopened-label {
+	float: left;
+	display: inline-block;
+}
+#wedopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 7px;
+}
+#thuopened-label {
+	float: left;
+	display: inline-block;
+}
+#thuopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 27px;
+}
+#friopened-label {
+	float: left;
+	display: inline-block;
+}
+#friopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 20px;
+}
+#satopened-label {
+	float: left;
+	display: inline-block;
+}
+#satopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 22px;
+}
+#sunopened-label {
+	float: left;
+	display: inline-block;
+}
+#sunopened-element {
+	float: left;
+	display: inline-block;
+	margin: 0px 0px 0px 9px;
+}
+.ui-helper-hidden-accessible {
+	visibility: hidden;
+}
