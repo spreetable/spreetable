@@ -7,7 +7,6 @@ class BizController extends Zend_Controller_Action {
     public function indexAction() {
     	$modelBusinesses = new Application_Model_Businesses();
     	$this->view->businesses = $modelBusinesses->getBusineses();
-    	
     	/*$location = $this->_helper->Client->GetClientLocation();
     	if(isset($_COOKIE['city'])) {
     		setcookie('city', 'Tijuanartre', null, '/');
