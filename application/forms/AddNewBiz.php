@@ -243,12 +243,7 @@ class Application_Form_AddNewBiz extends Zend_Form {
 			$concepts->addMultiOption($Concept->id_concepts, $Concept->concept);
 		}
 		$image = new Zend_Form_Element_File('bizimage');
-<<<<<<< HEAD
-		$image->setLabel('Selecciona una imagen: ')
-		->setDestination(realpath(APPLICATION_PATH . "/../test/assets/img/biz/bizowner/"));
-=======
 		$image->setLabel('Selecciona una imagen: ');
->>>>>>> 27e2a74d3bc8d13d1c02de6a68b5dc229c1ce2bc
 		$image->addValidator('Count', false, 1);
 		$image->addValidator('Extension', true, 'jpg, png');
 		$image->addDecorator('HtmlTag', array(
