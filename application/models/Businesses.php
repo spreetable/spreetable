@@ -66,15 +66,18 @@ class Application_Model_Businesses extends Zend_Db_Table_Abstract {
 			$cuisine = new Application_Model_BusinessesCuisines();
 			$cuisine->newBizCuisine($id_biz, $data['bizcuisines']);
 		}
-		//Agrega la imagen principal del negcio en caso de existir
-		if($data['bizimage']) {
+		//Agrega imagenes principal del negcio en caso de existir
+		if($data['ids_bizimage']) {
+			$ids = json_decode($data['ids_bizimage']);
 			$modelBusinessesImage = new Application_Model_BusinessesImages();
-			$imageData = array(
-					'image' => $data['bizimage'],
-					'id_gallery' => 1,
-					'id_businesses' => $id_biz
-					);
-			$modelBusinessesImage->save($imageData);
+			foreach ($ids as $id) {
+				$imageData = array(
+						'image' => $data['id_bizimage'],
+						'id_gallery' => 1,
+						'id_businesses' => $id_biz
+				);
+				$modelBusinessesImage->newImages($imageData);
+			}
 		}
 		return $id_biz;
 	}

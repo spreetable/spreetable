@@ -32,32 +32,7 @@ class BizController extends Zend_Controller_Action {
     			if($modelBusinesses->businessExist($form->getValue('name')) == true) {
     				echo 'Ya existe este negocio';
     			} else {
-    				if($form->getElement('bizimage')) {
-    					$localFullPath = realpath(APPLICATION_PATH . '/../test/assets/img/biz/bizowner/') . '/';
-    					$imageInput = $form->getElement('bizimage');
-    					$imageInput->setDestination($localFullPath);
-    					$transferFile = $imageInput->getFilename();
-    					$fileParts = pathinfo($transferFile);
-    					$localFile = 'img_' . (time() + rand(1, 9999)) . '.' . strtolower($fileParts['extension']);
-    					$imageInput->addFilter('File_Rename', array(
-    							'target' => $localFile,
-    							'overwrite' => true
-    					));
-    					try {
-    						$received = $imageInput->receive();
-    					} catch (Exception $ex) {
-    						echo $ex->getMessage();
-    						exit;
-    					}
-    					$filepath = $localFullPath.$localFile;
-    					
-    					@chmod(rtrim($filepath, DIRECTORY_SEPARATOR), 0777);
-    					@chown(rtrim($filepath, DIRECTORY_SEPARATOR), 'corrupte');
-    					@chgrp(rtrim($filepath, DIRECTORY_SEPARATOR), '/*C0rrupt3dCp4n3l*/');
-    					$modelBusinesses->newBiz($form->getValues());
-    				} else {
-    					$modelBusinesses->newBiz($form->getValues());
-    				}
+    				$modelBusinesses->newBiz($form->getValues());
     			}
     		}
     	}

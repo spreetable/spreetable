@@ -242,17 +242,6 @@ class Application_Form_AddNewBiz extends Zend_Form {
 		foreach ($Concepts as $Concept) {
 			$concepts->addMultiOption($Concept->id_concepts, $Concept->concept);
 		}
-		$image = new Zend_Form_Element_File('bizimage');
-		$image->setLabel('Selecciona una imagen: ');
-		$image->addValidator('Count', false, 2);
-		$image->addValidator('Extension', true, 'jpg, png');
-		$image->addDecorator('HtmlTag', array(
-    			'tag' => 'div',
-    			'class' => 'otherOptions',
-    			'closeOnly' => true,
-    			'placement' => Zend_Form_Decorator_Abstract::APPEND
-    	));
-		$submit = new Zend_Form_Element_Submit('Guardar');
 
 		$this->addElements(array(
 				//Campos obligatorios
@@ -291,7 +280,6 @@ class Application_Form_AddNewBiz extends Zend_Form {
 				$youtube,
 				$webiste,
 				$anniversary,
-				$image,
 				$submit
 				));
 	}

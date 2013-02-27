@@ -11,9 +11,12 @@ class Application_Model_BusinessesImages extends Zend_Db_Table_Abstract {
 	 * @param array $data
 	 * @return true|false
 	 */
-	public function save($data) {
+	public function newImages($data) {
 		$newimage = $this->createRow();
 		$newimage->setFromArray($data);
 		return $newimage->save();
+	}
+	public function getImages() {
+		
 	}
 }
