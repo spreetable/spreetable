@@ -27,12 +27,13 @@ class BizController extends Zend_Controller_Action {
     	$this->view->form = $form;
     	if($this->getRequest()->isPost()) {
     		if($form->isValid($this->_getAllParams())) {
+    			var_dump($this->_getAllParams());exit;
     			$modelBusinesses = new Application_Model_Businesses();
     			if($modelBusinesses->businessExist($form->getValue('name')) == true) {
     				echo 'Ya existe este negocio';
     			} else {
-    				if($form->getValue('bizimage')) {
-    					$localFullPath = realpath(APPLICATION_PATH . '/../public/assets/img/biz/bizowner/') . '/';
+    				if($form->getElement('bizimage')) {
+    					$localFullPath = realpath(APPLICATION_PATH . '/../test/assets/img/biz/bizowner/') . '/';
     					$imageInput = $form->getElement('bizimage');
     					$imageInput->setDestination($localFullPath);
     					$transferFile = $imageInput->getFilename();
@@ -48,11 +49,15 @@ class BizController extends Zend_Controller_Action {
     						echo $ex->getMessage();
     						exit;
     					}
-    					$modelBusinesses->save($form->getValues());
+    					$filepath = $localFullPath.$localFile;
+    					
+    					@chmod(rtrim($filepath, DIRECTORY_SEPARATOR), 0777);
+    					@chown(rtrim($filepath, DIRECTORY_SEPARATOR), 'corrupte');
+    					@chgrp(rtrim($filepath, DIRECTORY_SEPARATOR), '/*C0rrupt3dCp4n3l*/');
+    					$modelBusinesses->newBiz($form->getValues());
     				} else {
-    					$modelBusinesses->save($form->getValues());
+    					$modelBusinesses->newBiz($form->getValues());
     				}
-    				$modelBusinesses->newBiz($form->getValues());
     			}
     		}
     	}

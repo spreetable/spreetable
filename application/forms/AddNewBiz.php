@@ -244,7 +244,7 @@ class Application_Form_AddNewBiz extends Zend_Form {
 		}
 		$image = new Zend_Form_Element_File('bizimage');
 		$image->setLabel('Selecciona una imagen: ');
-		$image->addValidator('Count', false, 1);
+		$image->addValidator('Count', false, 2);
 		$image->addValidator('Extension', true, 'jpg, png');
 		$image->addDecorator('HtmlTag', array(
     			'tag' => 'div',

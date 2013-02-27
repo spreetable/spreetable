@@ -72,7 +72,7 @@ class Application_Model_Businesses extends Zend_Db_Table_Abstract {
 			$imageData = array(
 					'image' => $data['bizimage'],
 					'id_gallery' => 1,
-					'id_businesses' => $id_business
+					'id_businesses' => $id_biz
 					);
 			$modelBusinessesImage->save($imageData);
 		}
