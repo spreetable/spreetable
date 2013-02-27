@@ -6,6 +6,11 @@
 class Application_Model_Businesses extends Zend_Db_Table_Abstract {
 	protected $_name = 'businesses';
 	protected $_primary = 'id_businesses';
+	
+	public function getBusineses() {
+		$select = $this->select();
+		return $this->fetchAll($select);
+	}
 	/**
 	 * Metodo para obtener un array de los negocios para el autocompletado
 	 * @param string $term
