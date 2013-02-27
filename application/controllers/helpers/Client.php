@@ -2,11 +2,19 @@
 class ActionHelper_Client extends Zend_Controller_Action_Helper_Abstract {
 	public function init() {
 	}
-	public function GetClientLocation() {
+	/**
+	 * Optiene la localizacion de el usuario
+	 * @return mixed
+	 */
+	public function getClientLocation() {
 		$client = new Zend_Http_Client('http://freegeoip.net/json/'.$this->getClientIp());
 		$location = json_decode($client->request()->getRawBody());
 		return $location;
 	}
+	/**
+	 * Optiene la ip del usuario
+	 * @return string
+	 */
 	public function getClientIp() {
 		$ipaddress = '';
 		if (getenv('HTTP_CLIENT_IP'))
