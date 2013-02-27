@@ -31,16 +31,28 @@ class BizController extends Zend_Controller_Action {
     			if($modelBusinesses->businessExist($form->getValue('name')) == true) {
     				echo 'Ya existe este negocio';
     			} else {
-    				$modelBusinesses->newBiz($form->getValues());
-    				/*if($form->getValue('bizimage')) {
-    					$oldnameimage = pathinfo($form->bizimage->getFileName());
-    					$newimagename = 'newbiz_'.time().rand(0, 99999999).'.'.$oldnameimage['extension'];
-    					$form->bizimage->addFilter('Rename',  $newimagename);
-    					
+    				if($form->getValue('bizimage')) {
+    					$localFullPath = realpath(APPLICATION_PATH . '/../public/assets/img/biz/bizowner/') . '/';
+    					$imageInput = $form->getElement('bizimage');
+    					$imageInput->setDestination($localFullPath);
+    					$transferFile = $imageInput->getFilename();
+    					$fileParts = pathinfo($transferFile);
+    					$localFile = 'img_' . (time() + rand(1, 9999)) . '.' . strtolower($fileParts['extension']);
+    					$imageInput->addFilter('File_Rename', array(
+    							'target' => $localFile,
+    							'overwrite' => true
+    					));
+    					try {
+    						$received = $imageInput->receive();
+    					} catch (Exception $ex) {
+    						echo $ex->getMessage();
+    						exit;
+    					}
     					$modelBusinesses->save($form->getValues());
     				} else {
     					$modelBusinesses->save($form->getValues());
-    				}*/
+    				}
+    				$modelBusinesses->newBiz($form->getValues());
     			}
     		}
     	}
