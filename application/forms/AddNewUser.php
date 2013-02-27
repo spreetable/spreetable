@@ -48,7 +48,7 @@ class Application_Form_AddNewUser extends Zend_Form {
 		}
 		$profilepicture = new Zend_Form_Element_File('profilepicture ');
 		$profilepicture->setLabel('Selecciona una imagen: ')
-		->setDestination(realpath(APPLICATION_PATH . "/../public/assets/img/user/profile/"));
+		->setDestination(realpath(APPLICATION_PATH . "/../test/assets/img/user/profile/"));
 		$profilepicture->addValidator('Count', false, 1);
 		$profilepicture->addValidator('Extension', true, 'jpg, png');
 		$profilepicture->addDecorator('HtmlTag', array(

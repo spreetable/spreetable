@@ -5,14 +5,16 @@ class BizController extends Zend_Controller_Action {
        $this->_helper->layout->setLayout('layoutbiz');
     }
     public function indexAction() {
-    	$location = $this->_helper->Client->GetClientLocation();
+    	$modelBusinesses = new Application_Model_Businesses();
+    	$this->view->businesses = $modelBusinesses->getBusineses();
+    	/*$location = $this->_helper->Client->GetClientLocation();
     	if(isset($_COOKIE['city'])) {
     		setcookie('city', 'Tijuanartre', null, '/');
     		echo $_COOKIE['city'];
     	} else {
     		setcookie('city', 'Rosarito', null, '/');
     		echo $_COOKIE['city'];
-    	}
+    	}*/
     }
     /**
      * Action para dar de alta un negocio nuevo
