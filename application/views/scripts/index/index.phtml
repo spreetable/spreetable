@@ -1,4 +1,7 @@
-<div>
-<h1>Hola Spreetable</h1>
-<a href="/user/logout">Logout</a>
-</div>
+<section class="bussisenes">
+	<ul>
+		<?php foreach ($this->businesses as $biz): ?>
+			<li><?php echo $biz->name; ?></li>
+		<?php endforeach; ?>
+	</ul>
+</section>

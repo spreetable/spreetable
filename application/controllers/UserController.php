@@ -6,15 +6,15 @@ class UserController extends Zend_Controller_Action {
     /**
      * Action para registrar un nuevo usuario
      */
-    public function newuserAction() {
+    public function newAction() {
     	$auth = Zend_Auth::getInstance();
     	if ($auth->hasIdentity())
     		return $this->_redirect('/user/login');
-    	$form = new Application_Form_AddNewUser();
+    	$form = new Application_Form_Users_New();
     	$this->view->form = $form;
     	if($this->getRequest()->isPost()) {
     		if($form->isValid($this->_getAllParams())) {
-    			$modelUser = new Application_Model_Users();
+    			$modelUser = new Application_Model_Users_Users();
     			if($modelUser->emailExist($form->getValue('email')) == true) {
     				echo 'Ya hay un usario registrado con este correo';
     			} elseif (strlen($form->getValue('pass')) < 6 ) {
@@ -24,7 +24,7 @@ class UserController extends Zend_Controller_Action {
     			} else {
     				$idUser = $modelUser->newUser($form->getValues());
     				if($form->getValue('cuisines')) {
-    					$modelFavoriteCuisines = new Application_Model_UsersFavoriteCuisines();
+    					$modelFavoriteCuisines = new Application_Model_Users_Favorite_Cuisines();
     					$modelFavoriteCuisines->newFavoriteCuisines($idUser, $form->getValue('cuisines'));
     				}
     			}
@@ -40,10 +40,10 @@ class UserController extends Zend_Controller_Action {
     		return $this->_redirect('/');
     	}
     	$auth = Zend_Auth::getInstance();
-    	$form =  new Application_Form_UserLogin();
+    	$form =  new Application_Form_Users_Login();
     	if($this->getRequest()->isPost()) {
     		if($form->isValid($this->_getAllParams())) {
-    			$modelUser = new Application_Model_Users();
+    			$modelUser = new Application_Model_Users_Users();
     			$idUser = $modelUser->getIdUserByEmail($form->getValue('email'));
     			$authAdapter = new Zend_Auth_Adapter_DbTable();
     			$authAdapter

@@ -3,7 +3,7 @@
  * Modelo para los nuevos negocios
  *
  */
-class Application_Model_NewBusinesses extends Zend_Db_Table_Abstract {
+class Application_Model_New_Businesses extends Zend_Db_Table_Abstract {
 	protected $_name = 'new_businesses';
 	protected $_primary = 'id_new_businesses';
 	/**
